@@ -46,6 +46,13 @@ local function get_diag(severity, label)
   return count > 0 and string.format('[%s:%d] ', label, count) or ''
 end
 
+local function file_type()
+  if vim.bo.filetype ~= '' then
+    return vim.bo.filetype:upper() .. ' '
+  end
+  return ''
+end
+
 -- StatusLine Modes
 Status = function()
   return table.concat({
@@ -61,7 +68,8 @@ Status = function()
     '%#DiagnosticHint#',
     get_diag(vim.diagnostic.severity.HINT, 'H'),
     '%#MsgArea#',
-    '[Ln %l Col %c]', -- line, column
+    '[Ln %l Col %c] ',
+    file_type(),
   })
 end
 
