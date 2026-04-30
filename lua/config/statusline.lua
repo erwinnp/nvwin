@@ -43,18 +43,24 @@ local function get_diag(severity, label)
     return ''
   end
   local count = #vim.diagnostic.get(0, { severity = severity })
-  return count > 0 and string.format('[%s%d] ', label, count) or ''
+  return count > 0 and string.format('[%s:%d] ', label, count) or ''
 end
 
 -- StatusLine Modes
 Status = function()
   return table.concat({
-    string.format('  %s ', modes[api.nvim_get_mode().mode]):upper(), -- mode
-    '%#StatusActive#', -- middle color
+    string.format('  %s ', modes[api.nvim_get_mode().mode]):upper(),
     git_branch(),
     '%=', -- right align
+    '%#DiagnosticError#',
     get_diag(vim.diagnostic.severity.ERROR, 'E'),
+    '%#DiagnosticWarn#',
     get_diag(vim.diagnostic.severity.WARN, 'W'),
+    '%#DiagnosticInfo#',
+    get_diag(vim.diagnostic.severity.INFO, 'I'),
+    '%#DiagnosticHint#',
+    get_diag(vim.diagnostic.severity.HINT, 'H'),
+    '%#MsgArea#',
     '[Ln %l Col %c]', -- line, column
   })
 end
