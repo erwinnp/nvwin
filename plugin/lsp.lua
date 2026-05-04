@@ -110,6 +110,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
       '*',
       { capabilities = require('blink.cmp').get_lsp_capabilities() }
     )
+
     vim.lsp.config('lua_ls', {
       settings = {
         Lua = {
@@ -118,6 +119,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
         },
       },
     })
+
     vim.lsp.config('emmet_ls', {
       filetypes = {
         'html',
@@ -130,6 +132,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
         'svelte',
       },
     })
+
     vim.lsp.config('ts_ls', {
       filetypes = {
         'javascript',
@@ -138,7 +141,14 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
         'typescriptreact',
       },
       single_file_support = true,
+      init_options = {
+        preferences = {
+          includeCompletionsForModuleExports = true,
+          includeCompletionsForImportStatements = true,
+        },
+      },
     })
+
     vim.lsp.config('gopls', {
       settings = {
         gopls = {
@@ -148,7 +158,42 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
         },
       },
     })
-    vim.lsp.config('cssls', { init_options = { provideFormatter = true } })
+
+    vim.lsp.config('cssls', {
+      filetypes = { 'css', 'scss', 'less' },
+      init_options = { provideFormatter = true },
+      settings = {
+        css = {
+          lint = {
+            unknownAtRules = 'ignore',
+          },
+          validate = true,
+        },
+        scss = {
+          lint = {
+            unknownAtRules = 'ignore',
+          },
+          validate = true,
+        },
+        less = {
+          lint = {
+            unknownAtRules = 'ignore',
+          },
+          validate = true,
+        },
+      },
+    })
+
+    vim.lsp.config('tailwindcss', {
+      filetypes = {
+        'html',
+        'css',
+        'javascript',
+        'typescript',
+        'javascriptreact',
+        'typescriptreact',
+      },
+    })
 
     vim.lsp.enable({
       'lua_ls',
