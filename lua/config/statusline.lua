@@ -32,7 +32,7 @@ local function git_branch()
 
   local head = vim.b.gitsigns_head
   if head and head ~= '' then
-    return string.upper(head) .. ' '
+    return '| ' .. string.upper(head) .. ' '
   end
 
   return ''
@@ -56,7 +56,7 @@ end
 -- StatusLine Modes
 Status = function()
   return table.concat({
-    string.format('  %s ', modes[api.nvim_get_mode().mode]):upper(),
+    string.format(' %s ', modes[api.nvim_get_mode().mode]):upper(),
     git_branch(),
     '%=', -- right align
     '%#DiagnosticError#',
