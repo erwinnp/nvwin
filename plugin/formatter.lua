@@ -28,7 +28,12 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
             )[1]
 
             if not found then
-              return { '--single-quote', '--config-precedence', 'prefer-file' }
+              return {
+                '--single-quote',
+                '--jsx-single-quote',
+                '--config-precedence',
+                'prefer-file',
+              }
             end
             return {}
           end,
