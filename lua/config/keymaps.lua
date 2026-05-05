@@ -2,10 +2,6 @@ local function map(mode, key, cmd, desc)
   vim.keymap.set(mode, key, cmd, { desc = desc, noremap = true, silent = true })
 end
 
-local terminal = require('config.terminal')
-
-map('n', 'tt', terminal.create_terminal, 'Open Terminal')
-
 -- Window Management
 map('n', '<S-h>s', ':split<CR>', 'Window: Horizontal Split')
 map('n', '<S-v>s', ':vs<CR>', 'Window: Vertical Split')
