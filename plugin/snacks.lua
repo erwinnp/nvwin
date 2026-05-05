@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd('BufReadPre', {
       )
     end
 
-    map('n', '<leader>lg', function()
+    map('n', '<leader>lz', function()
       snacks.lazygit()
     end, 'Lazygit')
   end,
