@@ -1,4 +1,4 @@
-function file_name()
+local function file_name()
   local bufnr = vim.api.nvim_get_current_buf()
   local file = vim.api.nvim_buf_get_name(bufnr)
 
@@ -16,10 +16,10 @@ function file_name()
     return file
   end
 
-  local readonly = vim.bo.readonly and '[RO]' or ''
-  local modified = vim.bo.modified and '[+]' or ''
+  local readonly = vim.bo.readonly and '[RO] ' or ''
+  local modified = vim.bo.modified and '[+] ' or ''
 
-  return ' ' .. readonly .. modified .. ' ' .. file .. ' '
+  return '  ' .. readonly .. modified .. file .. ' '
 end
 
 function Winbar()
