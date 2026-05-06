@@ -4,16 +4,16 @@ require('vague').setup({
   transparent = true,
   bold = false,
   italic = false,
+  on_highlights = function(hl, colors)
+    hl.StatusLine.bg = nil
+    hl.StatusLineNC.bg = nil
+    hl.CursorLine.bg = nil
+    hl.NormalFloat.bg = nil
+    hl.BlinkCmpMenuBorder.bg = nil
+    hl.Pmenu.bg = nil
+    hl.WinBar.bg = nil
+    hl.WinBarNC.bg = nil
+  end,
 })
 
 vim.cmd.colorscheme('vague')
-
-vim.api.nvim_set_hl(0, 'StatusLine', { bg = nil })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = nil })
-vim.api.nvim_set_hl(0, 'CursorLine', { bg = nil })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = nil })
-vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder', { bg = nil })
-vim.api.nvim_set_hl(0, 'Pmenu', { bg = nil })
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = nil })
-vim.api.nvim_set_hl(0, 'WinBar', { bg = 'NONE' })
-vim.api.nvim_set_hl(0, 'WinBarNC', { bg = 'NONE' })
