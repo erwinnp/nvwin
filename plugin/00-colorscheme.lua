@@ -8,12 +8,11 @@ require('vague').setup({
     hl.StatusLine.bg = nil
     hl.StatusLineNC.bg = nil
     hl.CursorLine.bg = nil
-    hl.NormalFloat.bg = nil
-    hl.BlinkCmpMenuBorder.bg = nil
-    hl.Pmenu.bg = nil
+    hl.BlinkCmpMenuSelection = { fg = colors.fg, bg = colors.line }
     hl.WinBar.bg = nil
     hl.WinBarNC.bg = nil
   end,
 })
 
-vim.cmd.colorscheme('vague')
+vim.cmd('colorscheme ways')
+-- vim.cmd.colorscheme('vague')

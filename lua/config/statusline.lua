@@ -47,10 +47,21 @@ local function get_diag(severity, label)
 end
 
 local function file_type()
-  if vim.bo.filetype ~= '' then
-    return vim.bo.filetype:upper() .. ' '
+  local ft = vim.bo.filetype
+  if ft == '' then
+    return ''
   end
-  return ''
+
+  local aliases = {
+    typescriptreact = 'TSX',
+    javascriptreact = 'JSX',
+    javascript = 'JS',
+    typescript = 'TS',
+  }
+
+  local display_name = aliases[ft] or ft:upper()
+
+  return display_name .. ' '
 end
 
 -- StatusLine Modes
