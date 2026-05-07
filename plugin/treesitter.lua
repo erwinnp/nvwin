@@ -40,21 +40,28 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
     })
 
     vim.api.nvim_create_autocmd('FileType', {
-      pattern = {
-        'go',
-        'javascript',
-        'typescript',
-        'tsx',
-        'lua',
-        'html',
-        'css',
-        'markdown',
-        'markdown_inline',
-        'sql',
-        'yaml',
-      },
-      callback = function(ev)
-        pcall(vim.treesitter.start, ev.buf)
+      pattern = '*',
+      callback = function(args)
+        local buf = args.buf
+        local ft = vim.bo[buf].filetype
+        local lang = vim.treesitter.language.get_lang(ft)
+
+        if not lang then
+          return
+        end
+
+        local ok_add = pcall(vim.treesitter.language.add, lang)
+        if not ok_add then
+          return
+        end
+
+        pcall(vim.treesitter.start, buf, lang)
+
+        if ft ~= 'yaml' and ft ~= 'markdown' then
+          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          vim.bo[buf].smartindent = false
+          vim.bo[buf].cindent = false
+        end
       end,
     })
   end,

@@ -61,13 +61,13 @@ local function file_type()
 
   local display_name = aliases[ft] or ft:upper()
 
-  return display_name .. ' '
+  return ' ' .. display_name
 end
 
 -- StatusLine Modes
 Status = function()
   return table.concat({
-    string.format(' %s ', modes[api.nvim_get_mode().mode]):upper(),
+    string.format('%s ', modes[api.nvim_get_mode().mode]):upper(),
     git_branch(),
     '%=', -- right align
     '%#DiagnosticError#',
@@ -79,7 +79,7 @@ Status = function()
     '%#DiagnosticHint#',
     get_diag(vim.diagnostic.severity.HINT, 'H'),
     '%#MsgArea#',
-    '[Ln %l Col %c] ',
+    '[Ln %l Col %c]',
     file_type(),
   })
 end

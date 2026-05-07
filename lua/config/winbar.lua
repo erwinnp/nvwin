@@ -19,7 +19,7 @@ local function file_name()
   local readonly = vim.bo.readonly and '[RO] ' or ''
   local modified = vim.bo.modified and '[+] ' or ''
 
-  return '  ' .. readonly .. modified .. file .. ' '
+  return ' ' .. readonly .. modified .. file .. ' '
 end
 
 function Winbar()

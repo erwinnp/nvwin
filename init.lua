@@ -8,5 +8,6 @@ o = vim.o
 require('config.keymaps')
 require('config.options')
 require('config.autocmds')
+require('config.dashboard')
 require('config.statusline')
 require('config.winbar')

@@ -14,5 +14,5 @@ require('vague').setup({
   end,
 })
 
-vim.cmd('colorscheme ways')
 -- vim.cmd.colorscheme('vague')
+vim.cmd.colorscheme('heuvel')
