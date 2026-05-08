@@ -8,8 +8,10 @@ A minimalist, Neovim setup designed for (ME) website developer.
 
 ## Features
 
-- Native plugin manager -> vim.pack
-- Custom minimalist theme called HEUVEL -> `colors/`
-- LSP support
+- Native plugin manager -> `vim.pack`
+- Custom minimalist theme `HEUVEL` -> `colors/heuvel.lua`
+- Custom Winbar show buffer path -> `lua/config/winbar.lua`
+- CUstom Statusline -> `lua/config/statusline.lua`
+- Treesitter & LSP support
 - Git integration with `gitsigns.nvim`
 - Open startup.log file `66ms`
