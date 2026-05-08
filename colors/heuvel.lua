@@ -9,24 +9,24 @@ vim.g.colors_name = 'heuvel'
 
 local c = {
   -- Base colors
-  fg = '#cdcdcd',
+  fg = '#C5C9C7',
   bg = '#141415',
-  bg_light = '#323437',
+  bg_light = '#252530',
 
   -- Syntax colors
-  keyword = '#7285B0',
-  type = '#66999B',
-  string = '#66999B',
-  comment = '#878787',
+  keyword = '#658594',
+  type = '#b6927b',
+  string = '#6A9589',
+  comment = '#75797F',
 
   -- Muted colors
-  accent_muted = '#878787',
+  accent_muted = '#75797F',
 
   -- Diagnostics
   error = '#9C6767',
-  warn = '#FFC482',
-  info = '#7285B0',
-  hint = '#66999B',
+  warn = '#BF856B',
+  info = '#7E91Af',
+  hint = '#81AAA9',
 
   none = 'NONE',
 }
@@ -48,7 +48,7 @@ set_hl('VertSplit', { fg = c.comment })
 set_hl('Folded', { fg = c.comment, bg = c.bg_light })
 set_hl('FoldColumn', { fg = c.comment })
 set_hl('PMenu', { bg = c.none })
-set_hl('PMenuSel', { bg = c.bg_light, bold = true })
+set_hl('PMenuSel', { fg = c.bg, bg = c.string })
 set_hl('TabLine', { fg = c.comment, bg = c.none })
 set_hl('TabLineFill', { bg = c.none })
 set_hl('TabLineSel', { fg = c.fg, bg = c.none, bold = true })
@@ -94,10 +94,10 @@ set_hl('NonText', { fg = c.comment })
 set_hl('ModeMsg', { fg = c.type })
 
 -- Diff
-set_hl('DiffAdd', { bg = '#2d3830' })
-set_hl('DiffChange', { bg = '#2d3038' })
-set_hl('DiffDelete', { fg = c.error, bg = '#3a2d2d' })
-set_hl('DiffText', { bg = '#3a3830' })
+set_hl('DiffAdd', { bg = c.type })
+set_hl('DiffChange', { bg = c.warn })
+set_hl('DiffDelete', { fg = c.error, bg = c.error })
+set_hl('DiffText', { bg = c.comment })
 
 -- Diagnostics
 set_hl('DiagnosticError', { fg = c.error })
@@ -210,3 +210,8 @@ set_hl('htmlH3', { fg = c.fg, bold = false })
 set_hl('htmlH4', { fg = c.fg, bold = false })
 set_hl('htmlH5', { fg = c.fg, bold = false })
 set_hl('htmlH6', { fg = c.fg, bold = false })
+
+-- Minipick
+set_hl('MiniFilesDirectory', { fg = c.keyword })
+set_hl('MiniFilesFile', { fg = c.fg })
+set_hl('MiniFilesBorderModified', { fg = c.type })

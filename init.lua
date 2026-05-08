@@ -5,6 +5,7 @@ opt = vim.opt
 g = vim.g
 o = vim.o
 
+cmd.colorscheme('heuvel')
 require('config.keymaps')
 require('config.options')
 require('config.autocmds')
